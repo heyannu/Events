@@ -7,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CustomDrawer from './drawer'
 import Button from '@material-ui/core/Button';
+import { BrowserRouter as Link } from "react-router-dom";
 
 
 export default class Navbar extends Component {
@@ -38,9 +39,9 @@ export default class Navbar extends Component {
                       </Typography>
 
                         <div style={styles.direction}>
-                            <Button>Add Event</Button>
-                            <Button>View Events</Button>
-                            <Button>Upcoming Events</Button>
+                        <Link to={{pathname:"/addEvent"}}><Button>Add Events</Button></Link>
+                        <Link to={{pathname:"/viewEvent"}}><Button>View Events</Button></Link>
+                            {/* <Button>Upcoming Events</Button> */}
                         </div>
 
                     </Toolbar>

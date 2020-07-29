@@ -99,7 +99,7 @@ export default class AddEvent extends Component {
                             </div>
                             <div >
                                 <Button variant="contained" color="primary" style={styles.button} onClick={this.submit.bind(this)}>
-                                    Primary
+                                    ADD
                                 </Button>
                             </div>
                         </Container>
