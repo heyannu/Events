@@ -1,0 +1,19 @@
+.container1{
+    height:100vh;
+    width:100vw;
+    background:url(./images/4.jpg) no-repeat center;
+    background-size: cover;
+    color: antiquewhite;
+}
+.position {
+    display: flex;
+    flex-direction: row
+}
+.text {
+    margin-top: 2vh;
+    width: 30vw
+}
+.button {
+    width: 30vw;
+    border-radius: 15px;
+}

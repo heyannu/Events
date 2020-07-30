@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import {Container} from '@material-ui/core'
+import { BrowserRouter as Redirect } from "react-router-dom";
 import firebase from "firebase"
+import "./Assets/login.css"
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +36,7 @@ export default class Login extends Component {
   }
 
   render() {
-    if (this.state.redirect == true) {
+    if (this.state.redirect === true) {
       return <Redirect to={{
         pathname: '/login',
         state: {
@@ -43,26 +46,40 @@ export default class Login extends Component {
     }
     else {
       return (
-        <div>
-          <TextField
-            id="standard--input"
-            label="Email"
-            type="email"
-            onChange={this.email.bind(this)}
-            autoComplete="current-email"
-          />
-          <TextField
-            id="standard-password-input"
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            onChange={this.password.bind(this)}
-          />
-          <Button variant="contained" color="secondary" onClick={this.submit.bind(this)}>
-            Secondary
-          </Button>
+        <div className="container">
+          <div>
+            <Container maxWidth="sm">
+              <center><h1>Register</h1></center>
+              <Container maxWidth="sm">
+                <div className="position">
+                  <center>
+                    <TextField
+                      id="Email"
+                      placeholder="Email"
+                      variant="outlined"
+                      required
+                      onChange={this.email.bind(this)}
+                      className="text"
+                    />
+                    <TextField
+                      id="Password"
+                      placeholder="Password"
+                      variant="outlined"
+                      required
+                      onChange={this.password.bind(this)}
+                      className="text" />
+                  </center>
+                </div>
+                <div >
+                  <center>
+                    <Button className="button" variant="contained" color="primary" className="button" onClick={this.submit.bind(this)}>ADD</Button>
+                  </center>
+                </div>
+              </Container>
+            </Container>
+          </div>
         </div>
-      );
+           );
     }
   }
 }

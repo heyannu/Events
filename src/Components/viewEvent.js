@@ -5,6 +5,9 @@ import firebase from './firebase'
 import { Radio } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import { Divider } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
+import './Assets/styles.css'
 
 export default class ViewEvent extends Component {
     constructor(props) {
@@ -25,7 +28,7 @@ export default class ViewEvent extends Component {
             if (temp.indexOf(e[i]) === -1) {
                 temp.push(e[i]);
             };
-            return temp;
+        return temp;
     }
 
     compare(a, b) {
@@ -76,71 +79,87 @@ export default class ViewEvent extends Component {
 
 
     radio(e) {
-        let type = this.state;
         this.setState({
             selectedValue: e.target.value
         })
     }
     render() {
         return (
-            <div style={styles.container}>
-                {/* <Navbar /> */}
-                <div>
-                    <Container maxWidth="sm">
-                        <RadioGroup row aria-label="position" name="position" defaultValue="All" onChange={this.radio.bind(this)}>
-                            <FormControlLabel
+            <div className="container">
+                <Navbar />
+                <div className="radio">
+                    <Container>
+                        <center><h1>Add Event</h1></center>
+                        <div><RadioGroup row aria-label="position" name="position" defaultValue="All" onChange={this.radio.bind(this)} id="top">
+                            <div><FormControlLabel
                                 value="All"
                                 control={<Radio color="primary" />}
                                 label="All Events"
                                 labelPlacement="end"
                                 name="radio"
-                            />
-                            <FormControlLabel
+                            /></div>
+                            <div><FormControlLabel
                                 value="Bday"
                                 name="radio"
                                 control={<Radio color="primary" />}
                                 label="Birthday"
                                 labelPlacement="end"
-                            />
-                            <FormControlLabel
+                            /></div>
+                            <div><FormControlLabel
                                 value="Anni"
                                 name="radio"
                                 control={<Radio color="primary" />}
                                 label="Anniversary"
                                 labelPlacement="end"
-                            />
-                        </RadioGroup>
-                        {this.state.selectedValue == "All" ? this.state.events.map((e, index) =>
-                            <div>
-                                <div>{e.name}</div>
-                                <div>{e.event}</div>
-                                <div>{e.date}</div>
-                            </div>
-                        ) : null}
-                        {this.state.selectedValue == "Bday" ? this.state.anni.map((e, index) =>
-                            <div>
-                                <div>{e.name}</div>
-                                <div>{e.event}</div>
-                                <div>{e.date}</div>
-                            </div>
-                        ) : null}
+                            /></div>
+                        </RadioGroup></div>
+                        <Divider />
+                        <Grid className="space">
+                            {this.state.selectedValue == "All" ? this.state.events.map((e, index) =>
+                                <Grid container spacing={3} id="li">
+                                    <Grid item xs={4}>
+                                        <li>{e.name}</li>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <li>{e.event}</li>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <li>{e.date}</li>
+                                    </Grid>
 
-                        {this.state.selectedValue == "Anni" ? this.state.bday.map((e, index) =>
-                            <div>
-                                <div>{e.name}</div>
-                                <div>{e.event}</div>
-                                <div>{e.date}</div>
-                            </div>
-                        ) : null}
+                                </Grid>
+                            ) : null}
+                            {this.state.selectedValue == "Bday" ? this.state.bday.map((e, index) =>
+                                <Grid container spacing={3} id="li1">
+                                    <Grid item xs={4}>
+                                        <li>{e.name}</li>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <li>{e.event}</li>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <li>{e.date}</li>
+                                    </Grid>
+                                </Grid>
+                            ) : null}
 
+                            {this.state.selectedValue == "Anni" ? this.state.anni.map((e, index) =>
+                                <Grid container spacing={3} id="li2">
+                                    <Grid item xs={4}>
+                                        <li>{e.name}</li>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <li>{e.event}</li>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <li>{e.date}</li>
+                                    </Grid>
+                                </Grid>
+                            ) : null}
+                        </Grid>
                     </Container>
                 </div>
             </div>
         );
-    }
-}
-const styles = {
-    ul: {
-        marginTop: "5em"
     }
 }

@@ -5,6 +5,7 @@ import Register from './Components/register'
 import Home from './Components/home'
 import AddEvent from './Components/addEvent'
 import ViewEvent from './Components/viewEvent'
+// import sendEmail from './Components/mail'
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -18,7 +19,6 @@ export default class App extends Component {
       }
   }
  componentDidMount(){
-    //  firebase.auth().signOut()
     this.authListener();
 
  }
@@ -43,14 +43,15 @@ export default class App extends Component {
         <Route exact path='/' component={Home} />
         <Route exact path='/addEvent' component={AddEvent} />
         <Route exact path='/viewEvent' component={ViewEvent} />
+        {/* <Route exact path='/mail' component={sendEmail} ></Route> */}
         </Router>
       )
   }
   else{
     return (
    <Router>
-    <Route exact path="/" component={Register} />
-    <Route exact path="/login" component={Login} />  
+    <Route exact path="/register" component={Register} />
+    <Route exact path="/" component={Login} />  
     </Router>
   ) }
 
