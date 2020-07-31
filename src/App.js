@@ -5,7 +5,6 @@ import Register from './Components/register'
 import Home from './Components/home'
 import AddEvent from './Components/addEvent'
 import ViewEvent from './Components/viewEvent'
-// import sendEmail from './Components/mail'
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -43,7 +42,6 @@ export default class App extends Component {
         <Route exact path='/' component={Home} />
         <Route exact path='/addEvent' component={AddEvent} />
         <Route exact path='/viewEvent' component={ViewEvent} />
-        {/* <Route exact path='/mail' component={sendEmail} ></Route> */}
         </Router>
       )
   }

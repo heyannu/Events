@@ -76,8 +76,6 @@ export default class ViewEvent extends Component {
             anni: this.state.anni
         })
     }
-
-
     radio(e) {
         this.setState({
             selectedValue: e.target.value
@@ -113,7 +111,7 @@ export default class ViewEvent extends Component {
                                 labelPlacement="end"
                             /></div>
                         </RadioGroup></div>
-                        <Divider />
+                        <Divider style={{backgroundColor:"#fff", width:"85%", margin:"0vh 10vh"}}/>
                         <Grid className="space">
                             {this.state.selectedValue == "All" ? this.state.events.map((e, index) =>
                                 <Grid container spacing={3} id="li">

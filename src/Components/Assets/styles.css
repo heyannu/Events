@@ -1,7 +1,15 @@
 body{
-    background: url("./images/1.jpg")  no-repeat center;
+    background:  url("./images/2.jpg");
     background-size:cover;
 }
+
+/* background: #bdc3c7; 
+background: -webkit-linear-gradient(to bottom, #2c3e50, #bdc3c7);  
+background: linear-gradient(to bottom, #2c3e50, #bdc3c7); */
+h1{
+    font-family:"Philosopher"
+}
+
 .direction {
     width: 100vw;
     line-height: 1px;
@@ -13,22 +21,34 @@ body{
     margin: 18vh 14vh 14vh 19vh;
     width: 80vw;
     height: 70vh;
-    background:rgba(255,255,255,0.8);
+    background:#222831;
+    color: #ffffff;
 border-radius: 15px;
 }
 .position {
     display: flex;
-    flex-direction: row
+    flex-direction: row;  
+    margin:2vh 0;
+    width: 30vw;
+    background:#ffffff;
+    border-radius:7px;
 }
-.text {
-    margin-top: 2vh;
-    width: 30vw
+ #Name, #RName, #date{
+    width: 28vw;
+    /* border-radius:15px; */
+
 }
-.input{
-    width: 29vw;
+#Event{
+    width: 26.8vw;
+    /* border-radius:15px; */
+
 }
 .button {
-    width: 30vw
+    width: 30vw;
+    height:6vh;
+    border-radius: 7px;
+    color: #fff;
+    background-color:#00A1A1;
 }
 
 .list{
@@ -42,26 +62,35 @@ border-radius: 15px;
     font-size: 30px;
     text-align: center;
 }
-
+.text{
+    /* margin:2vh 0;
+    width: 30vw;    */
+}
+.bg{
+    background-color:#000;
+    padding: 1vh;
+    color:#ffffff;
+}
 li{
     list-style: none;
     margin: 0vh 14vh;
+    font-family: Recursive;
 }
 #top{
     margin: 0vh 14vh;
 }
 #li:hover{
-    background: rgba(62, 78, 28, 0.658);
-    color: #fff;
+    background: #00A0A0;
+    color:#000;
 }
 
 #li1:hover{
-    background: rgba(62, 78, 28, 0.658);  
-    color: #fff;
+    background: #00A0A0;
+    color:#000;
 }
 #li2:hover{
-    background: rgba(99, 126, 42, 0.658);
-    color: #fff
+    background: #00A0A0;
+    color:#000;
 }
 
 .space{
