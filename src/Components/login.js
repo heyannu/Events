@@ -45,13 +45,13 @@ export default class Login extends Component {
     }
     else {
       return (
-        <div className="container">
+        <div className="login">
           <div>
-            <Container maxWidth="sm">
-              <center><h1>Login</h1></center>
-              <Container maxWidth="sm">
-                <div className="position">
-                  <center>
+            <Container class="layer">
+              <div className="title"><center><h1>LOGIN</h1></center></div>
+              <Container>
+                <div className="pos">
+                  {/* <center> */}
                     <TextField
                       id="Email"
                       placeholder="Email"
@@ -60,6 +60,10 @@ export default class Login extends Component {
                       onChange={this.email.bind(this)}
                       className="text"
                     />
+                    <span class="faa">@</span>
+                    </div>
+                    
+                <div className="pos">
                     <TextField
                       id="Password"
                       placeholder="Password"
@@ -67,13 +71,21 @@ export default class Login extends Component {
                       required
                       onChange={this.password.bind(this)}
                       className="text" />
-                  </center>
+                  {/* </center> */}
+                  <span class="faa">*</span>
+               
                 </div>
+               
+               
                 <div >
                   <center>
-                    <Button className="button" variant="contained" color="primary" className="button" onClick={this.submit.bind(this)}>ADD</Button>
+                    <Button class="button1" variant="contained" color="primary" className="button" onClick={this.submit.bind(this)}>Login</Button>
                   </center>
                 </div>
+                <div className="link">
+                  <center><p>New User? <a href="/register"> Create an Account</a></p></center>
+                </div>
+
               </Container>
             </Container>
           </div>

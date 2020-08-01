@@ -16,18 +16,18 @@ export default class AddEvent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            date: '',
-            event: '',
-            open:true,
-            signature: '',
+         name:'',
+         date:'',
+         time:'',
+         location:'',
+         open:true
         }
     }
 
     componentDidMount() {
         this.setState({ open:false})
     }
-    name(e) {
+    meeting(e) {
         this.setState({ name: e.target.value })
     }
     date(e) {
@@ -39,22 +39,22 @@ export default class AddEvent extends Component {
         this.setState({ date: d })
     
     }
-    event(e) {
-        this.setState({ event: e.target.value })
+    time(e) {
+        this.setState({ time: e.target.value })
     }
-    signature(e) {
-        this.setState({ signature: e.target.value })
+    location(e) {
+        this.setState({ location: e.target.value })
     }
     submit(e) {
         console.log(this.state)
         const st = this.state;
-        if (st.name == "" || st.event == "" || st.date == "" || st.signature == "") {
+        if (st.name == "" || st.date == "" || st.time == "" || st.location == "") {
             alert("Fields cannot be empty");
         }
         else {
-            const eventRecord = { name: this.state.name, date: this.state.date, event: this.state.event, signature: this.state.signature }
+            const eventRecord = { name: this.state.name, date: this.state.date, time: this.state.time, location: this.state.location}
             const db = firebase.firestore()
-            db.collection('eventRecord').add({ eventRecord: eventRecord }).then(() => {
+            db.collection('meeting').add({ eventRecord: eventRecord }).then(() => {
                 console.log("created")
             })
         }
@@ -75,33 +75,29 @@ render() {
         </Dialog>
             <div>
                 <Container maxWidth="sm">
-                    <center><h1>Add Event</h1></center>
+                    <center><h1>Add Meeting</h1></center>
                     <Container maxWidth="sm">
                        
-                        <div className="position">
+                    <div className="position">
                             <center>
-                                <Select
-                                    labelId="Event"
-                                    placeholder="Event"
-                                    id="Event"
-                                    required
+                                <TextField
+                                    id="Name"
+                                    placeholder="Meeting"
                                     variant="outlined"
-                                    onChange={this.event.bind(this)}
-                                    value={this.state.event}
-                                >
-                                    <option value="Birthday">Birthday</option>
-                                    <option value="Anniversary">Anniversary</option>
-                                </Select>
+                                    required
+                                    onChange={this.meeting.bind(this)}
+                                />
                             </center>
                         </div>
+                        
                         <div className="position">
                             <center>
                                 <TextField
                                     id="RName"
-                                    placeholder="Reciever's Name"
+                                    placeholder="Location"
                                     variant="outlined"
                                     required
-                                    onChange={this.name.bind(this)}
+                                    onChange={this.location.bind(this)}
                                 />
                             </center>
                         </div>
@@ -122,10 +118,11 @@ render() {
                             <center>
                                 <TextField
                                     id="Name"
-                                    placeholder="Signature"
+                                    placeholder="Time"
+                                    type="time"
                                     variant="outlined"
                                     required
-                                    onChange={this.signature.bind(this)}
+                                    onChange={this.time.bind(this)}
                                 
                                 />
                             </center>

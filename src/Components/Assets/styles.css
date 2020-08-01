@@ -1,109 +1,118 @@
-body{
-    background:  url("./images/2.jpg");
-    background-size:cover;
+body {
+  background: url("./images/2.jpg") no-repeat center;
+  background-size: cover;
 }
 
-/* background: #bdc3c7; 
-background: -webkit-linear-gradient(to bottom, #2c3e50, #bdc3c7);  
-background: linear-gradient(to bottom, #2c3e50, #bdc3c7); */
-h1{
-    font-family:"Philosopher"
+h1 {
+  font-family: "Yesesva One";
 }
 
 .direction {
-    width: 100vw;
-    line-height: 1px;
-    float: right
+  width: 100vw;
+  line-height: 1px;
+  float: right;
 }
 .container {
-    overflow: hidden;
+  overflow: hidden;
+  justify-content: center;
+  margin: 17vh 14vh 14vh 19vh;
+  width: 80vw;
+  height: 70vh;
+  /* background: #222831; */
+  background-color: rgba(0, 0, 0, 0.6);
+
+  color: #ffffff;
+  border-radius: 15px;
+  display:flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+.container1 {
     justify-content: center;
-    margin: 18vh 14vh 14vh 19vh;
+    margin: 17vh 14vh 14vh 19vh;
     width: 80vw;
-    height: 70vh;
-    background:#222831;
+    /* background: #222831; */
+  background-color: rgba(0, 0, 0, 0.6);
     color: #ffffff;
-border-radius: 15px;
-}
+    border-radius: 15px;
+    display:flex;
+  }
 .position {
-    display: flex;
-    flex-direction: row;  
-    margin:2vh 0;
-    width: 30vw;
-    background:#ffffff;
-    border-radius:7px;
+  display: flex;
+  flex-direction: row;
+  margin: 2vh 0;
+  width: 30vw;
+  background: #ffffff;
+  border-radius: 7px;
 }
- #Name, #RName, #date{
-    width: 28vw;
-    /* border-radius:15px; */
-
+#Name,
+#RName,
+#date {
+  width: 28vw;
+  /* border-radius:15px; */
 }
-#Event{
-    width: 26.8vw;
-    /* border-radius:15px; */
-
+#Event {
+  width: 26.8vw;
+  /* border-radius:15px; */
 }
 .button {
-    width: 30vw;
-    height:6vh;
-    border-radius: 7px;
-    color: #fff;
-    background-color:#00A1A1;
+  width: 30vw;
+  height: 6vh;
+  border-radius: 7px;
+  color: #fff;
+  background-color: #00a1a1;
 }
 
-.list{
-    display:grid;
-    grid-template-columns: auto auto auto;
+.list {
+  display: grid;
+  grid-template-columns: auto auto auto;
 }
-.list-item{
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    font-size: 30px;
-    text-align: center;
-}
-.text{
-    /* margin:2vh 0;
-    width: 30vw;    */
-}
-.bg{
-    background-color:#000;
-    padding: 1vh;
-    color:#ffffff;
-}
-li{
-    list-style: none;
-    margin: 0vh 14vh;
-    font-family: Recursive;
-}
-#top{
-    margin: 0vh 14vh;
-}
-#li:hover{
-    background: #00A0A0;
-    color:#000;
+.list-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  /* padding: 20px; */
+  font-size: 30px;
+  text-align: center;
 }
 
-#li1:hover{
-    background: #00A0A0;
-    color:#000;
+.bg {
+  background-color: #000;
+  padding: 1vh;
+  color: #ffffff;
 }
-#li2:hover{
-    background: #00A0A0;
-    color:#000;
+li {
+  list-style: none;
+  margin: 0vh 14vh;
+  /* font-family: Recursive; */
+  font-size:2.5vh;
+}
+#top {
+  margin: 0vh 14vh;
+}
+#li:hover {
+  background: #00a0a0;
+  color: #000;
 }
 
-.space{
-    margin-top:3vh;
-    overflow: visible;
-
+#li1:hover {
+  background: #00a0a0;
+  color: #000;
+}
+#li2:hover {
+  background: #00a0a0;
+  color: #000;
 }
 
-.radio{
-    display:grid;
-    grid-template-rows: auto auto auto;
+.space {
+  margin-top: 3vh;
+  overflow: visible;
 }
 
-#container{
-    border-radius: 15px;
+.radio {
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+
+#container {
+  border-radius: 15px;
 }

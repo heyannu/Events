@@ -6,8 +6,11 @@ import { Radio } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { Divider } from '@material-ui/core';
-import { Grid } from '@material-ui/core';
 import './Assets/styles.css'
+import Grid from '@material-ui/core/Grid';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import loader from './Assets/images/loader.gif'
 
 export default class ViewEvent extends Component {
     constructor(props) {
@@ -18,7 +21,8 @@ export default class ViewEvent extends Component {
             anni: [],
             loading: true,
             selectedValue: "All",
-            type: ''
+            type: '',
+            open:true
         }
     }
 
@@ -50,7 +54,8 @@ export default class ViewEvent extends Component {
         snapshot.forEach((doc) => {
             this.state.events.push(doc.data().eventRecord);
             this.setState({
-                events: this.state.events
+                events: this.state.events,
+                open:false
             }, () => {
                 for (var i in this.state.events) {
                     if (this.state.events[i].event == "Birthday") {
@@ -83,11 +88,21 @@ export default class ViewEvent extends Component {
     }
     render() {
         return (
-            <div className="container">
+            <div className="container1">
                 <Navbar />
+                <Dialog
+          open={this.state.open}
+        >
+          <Grid container justify='center' style={{ marginTop: 10 }}>
+          </Grid>
+          <DialogActions>
+            {/* <p>count</p> */}
+            <img src={loader}></img>
+          </DialogActions>
+        </Dialog>
                 <div className="radio">
                     <Container>
-                        <center><h1>Add Event</h1></center>
+                        <center><h1>View Events</h1></center>
                         <div><RadioGroup row aria-label="position" name="position" defaultValue="All" onChange={this.radio.bind(this)} id="top">
                             <div><FormControlLabel
                                 value="All"
