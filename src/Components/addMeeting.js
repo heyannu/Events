@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Navbar from './navbar'
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
-import Select from '@material-ui/core/Select';
 import firebase from './firebase'
 import './Assets/styles.css'
 import Button from '@material-ui/core/Button';
@@ -53,7 +52,7 @@ export default class AddEvent extends Component {
     submit(e) {
         console.log(this.state)
         const st = this.state;
-        if (st.name == "" || st.date == "" || st.time == "" || st.location == "") {
+        if (st.name === "" || st.date === "" || st.time === "" || st.location === "") {
             alert("Fields cannot be empty");
         }
         else {
@@ -75,7 +74,7 @@ render() {
           </Grid>
           <DialogActions>
             {/* <p>count</p> */}
-            <img src={loader}></img>
+            <img src={loader} alt='loader'></img>
           </DialogActions>
         </Dialog>
             <div>

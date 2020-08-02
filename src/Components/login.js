@@ -5,7 +5,6 @@ import { Container } from '@material-ui/core';
 import { BrowserRouter as Redirect } from "react-router-dom";
 import firebase from "firebase"
 import "./Assets/login.css"
-import {useSelector} from "react-redux"
 
 export default class Login extends Component {
   constructor(props) {
@@ -26,7 +25,7 @@ export default class Login extends Component {
   }
   submit(e) {
     e.preventDefault();
-    if(this.state.password==""||this.state.email==''){
+    if(this.state.password===""||this.state.email===''){
       alert("Fields cannot be empty")
     }
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {

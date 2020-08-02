@@ -8,7 +8,7 @@ import AddEvent from './Components/addEvent'
 import ViewEvent from './Components/viewEvent'
 import ViewMeeting from './Components/viewMeeting'
 import UsersNotFound from './Components/usersNotFound'
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 export default class App extends Component {
     constructor(props) {
@@ -38,20 +38,30 @@ export default class App extends Component {
         const logged = this.state.isLogged
         return (
             <Router>
-                {(!logged) ?
-                    <div>
-                        <Route exact path='/' component={Login}/>                    
-                        <Route exact path="/register" component={Register} />
-                    </div>
-                    :
-                    <div>
-                        <Route exact path="/home" component={Home} />
-                        <Route exact path='/addEvent' component={AddEvent} />
-                        <Route exact path='/viewEvent' component={ViewEvent} />
-                        <Route exact path='/addMeeting' component={AddMeeting} />
-                        <Route exact path='/viewMeeting' component={ViewMeeting} />
-                    </div>
-                }
+                <Switch>
+                    <Route exact path='/'>
+                        {
+                            !logged ? <Login /> : <Home user={this.state.user} />
+                        }
+                    </Route>
+                    <Route exact path="/register">
+                        <Register />
+                    </Route>
+                    <Route exact path='/addEvent' >
+                        <AddEvent user={this.state.user}/>
+                    </Route>
+                    <Route exact path='/viewEvent' >
+                        <ViewEvent user={this.state.user}/>
+                    </Route>
+                    <Route exact path='/addMeeting'>
+                        <AddMeeting user={this.state.user}/>
+                    </Route>
+
+                    <Route exact path='/viewMeeting'>
+                        <ViewMeeting user={this.state.user}/>
+                    </Route>
+                    <Route component={UsersNotFound} />
+                </Switch>
             </Router>
         )
 

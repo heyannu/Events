@@ -53,7 +53,7 @@ export default class AddEvent extends Component {
     submit(e) {
         console.log(this.state)
         const st = this.state;
-        if (st.name == "" || st.event == "" || st.date == "" || st.signature == "") {
+        if (st.name === "" || st.event === "" || st.date === "" || st.signature === "") {
             alert("Fields cannot be empty");
         }
         else {
@@ -75,7 +75,7 @@ render() {
           </Grid>
           <DialogActions>
             {/* <p>count</p> */}
-            <img src={loader}></img>
+            <img src={loader} alt='loader'></img>
           </DialogActions>
         </Dialog>
             <div>

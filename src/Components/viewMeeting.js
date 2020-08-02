@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import Navbar from './navbar'
 import Container from '@material-ui/core/Container';
 import firebase from './firebase'
-import { Radio } from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
 import { Divider } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
 import './Assets/styles.css';
@@ -71,7 +68,7 @@ export default class ViewEvent extends Component {
                     </Grid>
                     <DialogActions>
                         {/* <p>count</p> */}
-                        <img src={loader}></img>
+                        <img src={loader} alt='loader'></img>
                     </DialogActions>
                 </Dialog>
                 <div className="radio">

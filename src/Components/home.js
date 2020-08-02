@@ -11,13 +11,12 @@ import loader from './Assets/images/loader.gif'
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Tooltip from '@material-ui/core/Tooltip';
 import swal from 'sweetalert';
-import { useSelector } from 'react-redux'
-// const count = useSelector(users);
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       events: [],
+      user:'',
       annimessage: [],
       bdaymessage: [],
       type: "bday",
@@ -47,6 +46,7 @@ export default class Home extends Component {
       bdaymessage: this.state.bdaymessage,
       open: false
     })
+    this.setState({user:this.props.user.email})
   }
 
   radio(e) {
@@ -54,10 +54,10 @@ export default class Home extends Component {
       selectedValue: e.target.value
     }, () => {
 
-      if (this.state.selectedValue == "bday") {
+      if (this.state.selectedValue === "bday") {
         this.setState({ type: "bday" })
       }
-      else if (this.state.selectedValue == "anni") {
+      else if (this.state.selectedValue === "anni") {
         this.setState({ type: "anni" })
       }
     })
@@ -78,7 +78,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home" style={{ background:"rgba(0,0,0,0.8"}}>
-        <Navbar />
+        <Navbar user={this.state.user} />
         <Dialog
           open={this.state.open}
         >
@@ -86,7 +86,7 @@ export default class Home extends Component {
           </Grid>
           <DialogActions>
             {/* <p>count</p> */}
-            <img src={loader}></img>
+            <img src={loader} alt="loader"></img>
           </DialogActions>
         </Dialog>
         <div className="logo">
@@ -114,7 +114,7 @@ export default class Home extends Component {
             </RadioGroup>
           </div>
           <div className="msgs">
-            {this.state.type == 'bday' ? this.state.bdaymessage.map((e, index) =>
+            {this.state.type === 'bday' ? this.state.bdaymessage.map((e, index) =>
               <div className="gr">
                 <Tooltip title="Double Click to Copy">
                 <CopyToClipboard text={this.state.value} className="disp" onCopy={this.oncopyMessage.bind(this, e, "bday")}>
@@ -123,7 +123,7 @@ export default class Home extends Component {
               </Tooltip>
               </div>
             ) : null}
-            {this.state.type == 'anni' ? this.state.annimessage.map((e, index) =>
+            {this.state.type === 'anni' ? this.state.annimessage.map((e, index) =>
               <Tooltip title="Double Click to Copy">
                 <CopyToClipboard text={this.state.value} className="disp" onCopy={this.oncopyMessage.bind(this, e, "anni")}>
                   <div className="ll"><ol>{"-> "+e.msg}</ol></div>

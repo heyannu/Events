@@ -30,7 +30,7 @@ export default class Login extends Component {
   }
 
   submit(e) {
-    if (this.state.name == "" || this.state.email == "" || this.state.password == "") {
+    if (this.state.name === "" || this.state.email === "" || this.state.password === "") {
       alert('Fields can not be empty!')
     }
     else {

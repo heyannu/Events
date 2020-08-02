@@ -49,10 +49,10 @@ export default class ViewEvent extends Component {
                 open: false
             }, () => {
                 for (var i in this.state.events) {
-                    if (this.state.events[i].event == "Birthday") {
+                    if (this.state.events[i].event === "Birthday") {
                         this.state.bday.push(this.state.events[i]);
                     }
-                    else if (this.state.events[i].event == "Anniversary") {
+                    else if (this.state.events[i].event === "Anniversary") {
                         this.state.anni.push(this.state.events[i]);
                     }
                 }
@@ -90,7 +90,7 @@ export default class ViewEvent extends Component {
                     </Grid>
                     <DialogActions>
                         {/* <p>count</p> */}
-                        <img src={loader}></img>
+                        <img src={loader} alt='loader'></img>
                     </DialogActions>
                 </Dialog>
                 <div className="radio">
@@ -121,7 +121,7 @@ export default class ViewEvent extends Component {
                         </RadioGroup></div>
                         <Divider style={{ backgroundColor: "#fff", width: "85%", margin: "0vh 10vh" }} />
                         <Grid className="space">
-                            {this.state.selectedValue == "All" ? this.state.events.map((e, index) =>
+                            {this.state.selectedValue === "All" ? this.state.events.map((e, index) =>
                                 <Grid container spacing={3} id="li">
                                     <Grid item xs={4}>
                                         <li>{e.name}</li>
@@ -141,7 +141,7 @@ export default class ViewEvent extends Component {
 
                                 </Grid>
                             ) : null}
-                            {this.state.selectedValue == "Bday" ? this.state.bday.map((e, index) =>
+                            {this.state.selectedValue === "Bday" ? this.state.bday.map((e, index) =>
                                 <Grid container spacing={3} id="li1">
                                     <Grid item xs={4}>
                                         <li>{e.name}</li>
@@ -156,7 +156,7 @@ export default class ViewEvent extends Component {
                                 </Grid>
                             ) : null}
 
-                            {this.state.selectedValue == "Anni" ? this.state.anni.map((e, index) =>
+                            {this.state.selectedValue === "Anni" ? this.state.anni.map((e, index) =>
                                 <Grid container spacing={3} id="li2">
                                     <Grid item xs={4}>
                                         <li>{e.name}</li>
