@@ -90,7 +90,7 @@ export default class Home extends Component {
           </DialogActions>
         </Dialog>
         <div className="logo">
-          <div className="img" style={{background:"#ffffff86", marginBottom:"4vh", borderRadius:"25px"}}>
+          <div className="img" style={{background:"#ffffff", marginBottom:"4vh", borderRadius:"25px"}}>
             <RadioGroup row aria-label="position" name="position" defaultValue="bday" style={{ color: "#000" }} onChange={this.radio.bind(this)} id="top">
               <div>
                 <FormControlLabel
@@ -118,7 +118,7 @@ export default class Home extends Component {
               <div className="gr">
                 <Tooltip title="Double Click to Copy">
                 <CopyToClipboard text={this.state.value} className="disp" onCopy={this.oncopyMessage.bind(this, e, "bday")}>
-                  <div className="ll">{e.msg}</div>
+                  <div className="ll"><ol>{"-> "+e.msg}</ol></div>
                 </CopyToClipboard>
               </Tooltip>
               </div>
@@ -126,7 +126,7 @@ export default class Home extends Component {
             {this.state.type == 'anni' ? this.state.annimessage.map((e, index) =>
               <Tooltip title="Double Click to Copy">
                 <CopyToClipboard text={this.state.value} className="disp" onCopy={this.oncopyMessage.bind(this, e, "anni")}>
-                  <div className="ll">{e.msg}</div>
+                  <div className="ll"><ol>{"-> "+e.msg}</ol></div>
                 </CopyToClipboard>
               </Tooltip>
             ) : null}

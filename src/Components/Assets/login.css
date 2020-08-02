@@ -1,8 +1,9 @@
 .login {
   margin-top:1vh;
   width: 100vw;
-  height:99vh;
+  height:100vh;
   display: flex;
+  overflow: hidden;
   justify-content: center;
   align-items: center;
   color: #fff;
@@ -36,19 +37,20 @@ a{
 }
 .pos {
   margin: 3vh 5vw;
-  background: #ffffff;
-  border-radius: 7px;
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
-  /* justify-content: center; */
-  width: 23vw;
-}
-.text {
+  align-items: center;
+  justify-content: center;
   width: 20vw;
 }
+.text {
+  background: #ffffff;
+  width: 20vw;
+  border-radius: 7px;
+  height: 4vw;
+}
 .button1 {
-  width: 23vw;
+  width: 20vw;
   height: 6vh;
   border-radius: 7px;
   color: #fff;
@@ -77,19 +79,19 @@ a{
     /*grid-template-columns: auto auto auto; */
 }
 .ll{
-  font-family: Sans-Serif;
+  font-family: Recursive;
+}
 
-}
-.img{
-  margin-left:5vw;
-}
 .btn{
   margin:1vh
 }
 .home{
   height:100vh;
+  overflow:auto
 }
-
+ol li{
+  list-style-type: disc;
+}
 .disp{
   padding:1vh;
 }

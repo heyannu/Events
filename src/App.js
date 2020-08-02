@@ -20,44 +20,40 @@ export default class App extends Component {
     }
     componentDidMount() {
         this.authListener();
-
     }
     authListener() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({ user: user, isLogged: true })
-                console.log("loggedin")
+                console.log(this.state.isLogged)
             }
             else {
                 this.setState({ user: null, isLogged: false })
-                console.log("notloggedin")
-
+                console.log(this.state.isLogged)
             }
         })
     }
 
     render() {
-        if (this.state.isLogged) {
-            return (
-                <Router>
-                    <Route exact path='/' component={AddEvent} />
-                    <Route exact path='/viewEvent' component={ViewEvent} />
-                    <Route exact path='/addMeeting' component={AddMeeting} />
-                    <Route exact path='/viewMeeting' component={ViewMeeting} />
-                    {/* <Route path='*' component={UsersNotFound} /> */}
-                    {/* <Redirect from='*' to='/404' /> */}
-                </Router>
-            )
-        }
-        else {
-            return (
-                <Router>
-                    <Route exact path="/register" component={Register} />
-                    <Route exact path="/" component={Login} />
-                    {/* <Route path='*' component={UsersNotFound} /> */}
-                </Router>
-            )
-        }
+        const logged = this.state.isLogged
+        return (
+            <Router>
+                {(!logged) ?
+                    <div>
+                        <Route exact path='/' component={Login}/>                    
+                        <Route exact path="/register" component={Register} />
+                    </div>
+                    :
+                    <div>
+                        <Route exact path="/home" component={Home} />
+                        <Route exact path='/addEvent' component={AddEvent} />
+                        <Route exact path='/viewEvent' component={ViewEvent} />
+                        <Route exact path='/addMeeting' component={AddMeeting} />
+                        <Route exact path='/viewMeeting' component={ViewMeeting} />
+                    </div>
+                }
+            </Router>
+        )
 
     }
 }

@@ -22,7 +22,7 @@ export default class ViewEvent extends Component {
             loading: true,
             selectedValue: "All",
             type: '',
-            open:true
+            open: true
         }
     }
 
@@ -36,16 +36,7 @@ export default class ViewEvent extends Component {
     }
 
     compare(a, b) {
-        const A = a.date;
-        const B = b.date;
 
-        let comparison = 0;
-        if (A > B) {
-            comparison = 1;
-        } else if (A < B) {
-            comparison = -1;
-        }
-        return comparison;
     }
 
     async componentWillMount() {
@@ -55,7 +46,7 @@ export default class ViewEvent extends Component {
             this.state.events.push(doc.data().eventRecord);
             this.setState({
                 events: this.state.events,
-                open:false
+                open: false
             }, () => {
                 for (var i in this.state.events) {
                     if (this.state.events[i].event == "Birthday") {
@@ -69,12 +60,7 @@ export default class ViewEvent extends Component {
             })
             this.state.bday = this.duplicate(this.state.bday)
             this.state.anni = this.duplicate(this.state.anni)
-            this.state.events.sort(this.compare)
-            this.state.bday.sort(this.compare)
-            this.state.anni.sort(this.compare)
         });
-
-
 
         this.setState({
             bday: this.state.bday,
@@ -86,20 +72,27 @@ export default class ViewEvent extends Component {
             selectedValue: e.target.value
         })
     }
+
+    // trash(e, trash){
+    //     console.log(e)
+    // }
+    // update(e,trash){
+    //     console.log(e)
+    // }
     render() {
         return (
             <div className="container1">
                 <Navbar />
                 <Dialog
-          open={this.state.open}
-        >
-          <Grid container justify='center' style={{ marginTop: 10 }}>
-          </Grid>
-          <DialogActions>
-            {/* <p>count</p> */}
-            <img src={loader}></img>
-          </DialogActions>
-        </Dialog>
+                    open={this.state.open}
+                >
+                    <Grid container justify='center' style={{ marginTop: 10 }}>
+                    </Grid>
+                    <DialogActions>
+                        {/* <p>count</p> */}
+                        <img src={loader}></img>
+                    </DialogActions>
+                </Dialog>
                 <div className="radio">
                     <Container>
                         <center><h1>View Events</h1></center>
@@ -126,7 +119,7 @@ export default class ViewEvent extends Component {
                                 labelPlacement="end"
                             /></div>
                         </RadioGroup></div>
-                        <Divider style={{backgroundColor:"#fff", width:"85%", margin:"0vh 10vh"}}/>
+                        <Divider style={{ backgroundColor: "#fff", width: "85%", margin: "0vh 10vh" }} />
                         <Grid className="space">
                             {this.state.selectedValue == "All" ? this.state.events.map((e, index) =>
                                 <Grid container spacing={3} id="li">
@@ -137,8 +130,14 @@ export default class ViewEvent extends Component {
                                         <li>{e.event}</li>
                                     </Grid>
                                     <Grid item xs={4}>
-                                        <li>{e.date}</li>
+                                        <li>{e.day + "-" + e.month + "-" + e.year}</li>
                                     </Grid>
+                                    {/* <Grid item xs={3}>
+                                       <div className="icons">
+                                       <i class="fa fa-trash" aria-hidden="true" onClick={this.trash.bind(this, e)}></i>
+                                        <i class="fa fa-pencil" aria-hidden="true" onClick={this.update.bind(this, e)}></i>
+                                       </div>
+                                    </Grid> */}
 
                                 </Grid>
                             ) : null}
@@ -151,7 +150,8 @@ export default class ViewEvent extends Component {
                                         <li>{e.event}</li>
                                     </Grid>
                                     <Grid item xs={4}>
-                                        <li>{e.date}</li>
+                                        <li>{e.day + "-" + e.month + "-" + e.year}</li>
+
                                     </Grid>
                                 </Grid>
                             ) : null}
@@ -165,7 +165,8 @@ export default class ViewEvent extends Component {
                                         <li>{e.event}</li>
                                     </Grid>
                                     <Grid item xs={4}>
-                                        <li>{e.date}</li>
+                                        <li>{e.day + "-" + e.month + "-" + e.year}</li>
+
                                     </Grid>
                                 </Grid>
                             ) : null}

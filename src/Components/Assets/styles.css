@@ -13,30 +13,28 @@ h1 {
   float: right;
 }
 .container {
-  overflow: hidden;
+  /* overflow: hidden; */
   justify-content: center;
   margin: 17vh 14vh 14vh 19vh;
   width: 80vw;
   height: 70vh;
-  /* background: #222831; */
   background-color: rgba(0, 0, 0, 0.6);
-
   color: #ffffff;
   border-radius: 15px;
-  display:flex;
-  /* align-items: center; */
+  display: flex;
   justify-content: center;
 }
 .container1 {
-    justify-content: center;
-    margin: 17vh 14vh 14vh 19vh;
-    width: 80vw;
-    /* background: #222831; */
+  justify-content: center;
+  margin: 17vh 14vh 14vh 19vh;
+  width: 80vw;
+  overflow: auto;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-    color: #ffffff;
-    border-radius: 15px;
-    display:flex;
-  }
+  color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+}
 .position {
   display: flex;
   flex-direction: row;
@@ -48,15 +46,15 @@ h1 {
 #Name,
 #RName,
 #date {
-  width: 28vw;
+  width: 27.8vw;
   /* border-radius:15px; */
 }
 #Event {
-  width: 26.8vw;
+  width: 26.3vw;
   /* border-radius:15px; */
 }
 .button {
-  width: 30vw;
+  width: 30.2vw;
   height: 6vh;
   border-radius: 7px;
   color: #fff;
@@ -82,9 +80,11 @@ h1 {
 }
 li {
   list-style: none;
-  margin: 0vh 14vh;
-  /* font-family: Recursive; */
-  font-size:2.5vh;
+  margin: 0vh 5vh;
+  display:flex;
+  justify-content: center;
+  font-family: Recursive;
+  font-size: 2.5vh;
 }
 #top {
   margin: 0vh 14vh;
@@ -106,13 +106,36 @@ li {
 .space {
   margin-top: 3vh;
   overflow: visible;
+
 }
 
 .radio {
-  display: grid;
+  display: flex;
   grid-template-rows: auto auto auto;
+  width:70vw;
+  
 }
 
 #container {
   border-radius: 15px;
+}
+
+#li{
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+}
+.fa-trash{
+  margin-right:3vh
+}
+.fa-trash:hover{
+  color:red
+}
+.fa-pencil:hover{
+  color:red
+}
+.icons{
+  display:flex;
+  justify-content:center
 }

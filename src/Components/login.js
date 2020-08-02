@@ -5,6 +5,8 @@ import { Container } from '@material-ui/core';
 import { BrowserRouter as Redirect } from "react-router-dom";
 import firebase from "firebase"
 import "./Assets/login.css"
+import {useSelector} from "react-redux"
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +26,9 @@ export default class Login extends Component {
   }
   submit(e) {
     e.preventDefault();
+    if(this.state.password==""||this.state.email==''){
+      alert("Fields cannot be empty")
+    }
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
       this.setState({
         redirect: true
@@ -31,13 +36,13 @@ export default class Login extends Component {
       console.log(user)
     }).catch((err) => {
       console.log(err)
+      alert(err.message)
     })
   }
-
   render() {
     if (this.state.redirect === true) {
       return <Redirect to={{
-        pathname: '/',
+        pathname: '/addEvent',
         state: {
           message: 'Login Successful!'
         }
@@ -49,34 +54,32 @@ export default class Login extends Component {
           <div>
             <Container class="layer">
               <div className="title"><center><h1>LOGIN</h1></center></div>
+              {/* <p>counter</p> */}
+
               <Container>
                 <div className="pos">
                   {/* <center> */}
-                    <TextField
-                      id="Email"
-                      placeholder="Email"
-                      variant="outlined"
-                      required
-                      onChange={this.email.bind(this)}
-                      className="text"
-                    />
-                    <span class="faa">@</span>
-                    </div>
-                    
-                <div className="pos">
-                    <TextField
-                      id="Password"
-                      placeholder="Password"
-                      variant="outlined"
-                      required
-                      onChange={this.password.bind(this)}
-                      className="text" />
-                  {/* </center> */}
-                  <span class="faa">*</span>
-               
+                  <TextField
+                    id="Email"
+                    placeholder="Email"
+                    variant="outlined"
+                    required
+                    onChange={this.email.bind(this)}
+                    className="text"
+                  />
+                
                 </div>
-               
-               
+
+                <div className="pos">
+                  <TextField
+                    id="Password"
+                    placeholder="Password"
+                    variant="outlined"
+                    required
+                    onChange={this.password.bind(this)}
+                    className="text" />
+                 
+                </div>
                 <div >
                   <center>
                     <Button class="button1" variant="contained" color="primary" className="button" onClick={this.submit.bind(this)}>Login</Button>
@@ -85,7 +88,6 @@ export default class Login extends Component {
                 <div className="link">
                   <center><p>New User? <a href="/register"> Create an Account</a></p></center>
                 </div>
-
               </Container>
             </Container>
           </div>

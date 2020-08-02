@@ -11,7 +11,7 @@ export default class Login extends Component {
     super(props);
     this.state = {
       email: "",
-      name:"",
+      // name: "",
       password: "",
       redirect: false
     }
@@ -20,34 +20,42 @@ export default class Login extends Component {
     this.setState({ email: e.target.value })
     console.log(e.target.value)
   }
-  name(e) {
-    this.setState({ name: e.target.value })
-    console.log(e.target.value)
-  }
+  // name(e) {
+  //   this.setState({ name: e.target.value })
+  //   console.log(e.target.value)
+  // }
   password(e) {
     this.setState({ password: e.target.value })
     console.log(e.target.value)
   }
-  
-  submit(e) {
-    e.preventDefault();
-    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
-      this.setState({
-        redirect: true
-      })
-    }).catch((err) => {
-      console.log(err)
-    })
 
+  submit(e) {
+    if (this.state.name == "" || this.state.email == "" || this.state.password == "") {
+      alert('Fields can not be empty!')
+    }
+    else {
+      this.setState({
+        email:'',
+        password:''
+      })
+      e.preventDefault();
+      firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
+        this.setState({
+          redirect: true
+        })
+      }).catch((err) => {
+        console.log(err)
+        alert(err.message)
+       
+      })
+
+    }
   }
 
   render() {
     if (this.state.redirect === true) {
       return <Redirect to={{
-        pathname: '/',
-        state: {
-          message: 'Registration Successful!'
-        }
+        pathname: '/'
       }} />
     }
     else {
@@ -57,18 +65,6 @@ export default class Login extends Component {
             <Container class="layer">
               <div className="title"><center><h1>REGISTER</h1></center></div>
               <Container>
-              <div className="pos">
-                  <TextField
-                    id="Name"
-                    placeholder="Name"
-                    variant="outlined"
-                    required
-                    onChange={this.name.bind(this)}
-                    className="text" />
-                  {/* </center> */}
-                  <span class="faa">*</span>
-                </div>
-                
                 <div className="pos">
                   {/* <center> */}
                   <TextField
@@ -76,10 +72,10 @@ export default class Login extends Component {
                     placeholder="Email"
                     variant="outlined"
                     required
+                    value={this.state.email}
                     onChange={this.email.bind(this)}
                     className="text"
                   />
-                  <span class="faa">@</span>
 
                 </div>
                 <div className="pos">
@@ -88,31 +84,18 @@ export default class Login extends Component {
                     placeholder="Password"
                     variant="outlined"
                     required
+                    value={this.state.password}
                     onChange={this.password.bind(this)}
                     className="text" />
-                  {/* </center> */}
-                  <span class="faa">*</span>
                 </div>
-
-                {/* <div className="pos">
-                  <TextField
-                    id="Password"
-                    placeholder="Password"
-                    variant="outlined"
-                    required
-                    onChange={this.password.bind(this)}
-                    className="text" /> */}
-                  {/* </center> */}
-                  {/* <span class="faa">*</span>
-                </div>
-                 */}
-
                 <div >
                   <center>
                     <Button class="button1" variant="contained" color="primary" className="button" onClick={this.submit.bind(this)}>Register</Button>
                   </center>
                 </div>
-
+                <div className="link">
+                  <center><p>Already an User?<a href="/"> Sign In Now</a></p></center>
+                </div>
               </Container>
             </Container>
           </div>

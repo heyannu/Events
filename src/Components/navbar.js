@@ -21,10 +21,9 @@ export default class Navbar extends Component {
         this.state = {
             valid: true,
             anchorEl: false,
-            redirectE:false,
-            redirectM:false,
-            redirectAM:false,
-            redirectAE:false
+            redirectE: false,
+            redirectM: false,
+
         }
     }
 
@@ -32,33 +31,23 @@ export default class Navbar extends Component {
         this.setState({ anchorEl: e.currentTarget });
     }
     close(e, option) {
-        this.setState({ anchorEl:null})
+        this.setState({ anchorEl: null })
         if (e == "Logout") {
             firebase.auth().signOut();
             this.setState({
                 valid: false,
             });
         }
-        else if(e == "View Events"){
+        else if (e == "View Events") {
             this.setState({
-                redirectE:true
+                redirectE: true
             });
         }
-        else if(e == "View Meeting"){
+        else if (e == "View Meeting") {
             this.setState({
-                redirectM:true
+                redirectM: true
             });
         }
-    }
-    change(e){
-        this.setState({
-            redirectAE:true
-        })
-    }
-    change1(e){
-        this.setState({
-            redirectAM:true
-        })
     }
     render() {
         const open = Boolean(this.state.anchorEl);
@@ -67,35 +56,25 @@ export default class Navbar extends Component {
                 pathname: '/',
             }} />
         }
-        else if(this.state.redirectE == true){
+        else if (this.state.redirectE == true) {
             return <Redirect to={{
                 pathname: '/viewEvent',
             }} />
         }
-        else if(this.state.redirectM == true){
+        else if (this.state.redirectM == true) {
             return <Redirect to={{
                 pathname: '/viewMeeting',
             }} />
         }
-        else if(this.state.redirectAM == true){
-            return <Redirect to={{
-                pathname: '/addMeeting',
-            }} />
-        }
-        
-        else if(this.state.redirectAE == true){
-            return <Redirect to={{
-                pathname: '/',
-            }} />
-        }
-
         return (
             <div>
                 <AppBar position="fixed" style={styles.direction}>
                     <Toolbar>
                         <div style={styles.dir}>
-                           <Button onClick={this.change.bind(this)} variant="outlined" class="bg">Add Event</Button>
-                          <Button class="bg" variant="outlined" onClick={this.change1.bind(this)}>Add Meeting</Button>
+                            <a href="./addEvent"><Button variant="outlined" class="bg">Add Event</Button></a>
+                            <a href="./addMeeting"><Button class="bg" variant="outlined">Add Meeting</Button></a>
+                            <a href="./home"><Button class="bg" variant="outlined">Messages</Button></a>
+
                         </div>
                         <div style={styles.nav}>
                             <AccountCircleRoundedIcon style={styles.icon} onClick={this.click.bind(this)} />

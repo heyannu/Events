@@ -50,7 +50,7 @@ export default class ViewEvent extends Component {
         const db = firebase.firestore()
         const snapshot = await db.collection('meeting').get()
         snapshot.forEach((doc) => {
-            this.state.meeting.push(doc.data().eventRecord);
+            this.state.meeting.push(doc.data().meetingRecord);
             this.setState({
                 meeting: this.state.meeting,
                 open: false
@@ -80,12 +80,12 @@ export default class ViewEvent extends Component {
                         <Divider style={{ backgroundColor: "#fff", width: "85%", margin: "0vh 10vh" }} />
                         <Grid className="space">
                             {this.state.meeting.map((e, index) =>
-                                <Grid container spacing={3} id="li">
+                                <Grid container spacing={1} id="li">
                                     <Grid item xs={3}>
                                         <li>{e.name}</li>
                                     </Grid>
                                     <Grid item xs={3}>
-                                        <li>{e.date}</li>
+                                        <li>{e.day+"-"+e.month+"-"+e.year}</li>
                                     </Grid>
                                     <Grid item xs={3}>
                                         <li>{e.time}</li>

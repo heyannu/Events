@@ -17,7 +17,9 @@ export default class AddEvent extends Component {
         super(props);
         this.state = {
             name: '',
-            date: '',
+            day: '',
+            month:"",
+            year:"",
             event: '',
             open:true,
             signature: '',
@@ -35,8 +37,11 @@ export default class AddEvent extends Component {
         var month = date.getMonth() + 1;
         var day = date.getDate();
         var year = date.getFullYear();
-        var d = (day+"-"+month+"-"+year)
-        this.setState({ date: d })
+        this.setState({
+            day:day,
+            month:month,
+            year:year
+        })
     
     }
     event(e) {
@@ -52,7 +57,7 @@ export default class AddEvent extends Component {
             alert("Fields cannot be empty");
         }
         else {
-            const eventRecord = { name: this.state.name, date: this.state.date, event: this.state.event, signature: this.state.signature }
+            const eventRecord = { name: this.state.name, day: this.state.day, month: this.state.month, year: this.state.year, event: this.state.event, signature: this.state.signature }
             const db = firebase.firestore()
             db.collection('eventRecord').add({ eventRecord: eventRecord }).then(() => {
                 console.log("created")
