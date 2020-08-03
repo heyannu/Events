@@ -1,23 +1,23 @@
-body{
-    background:url('../images/404.jpg') no-repeat center;
-    background-size:cover;
-    width:100vw;
-    height:100vh;
+.usr {
+  background: url("../images/404.jpg") no-repeat center;
+  background-size:cover;
+  width: 100vw;
+  height: 100vh;
 }
 
-@media screen and (max-width:600px){
-    body{
-        background:url('../images/404.jpg') no-repeat center;
-        background-size:cover;
-        width:100vw;
-        height:100vh;
-    }    
+@media screen and (max-width: 600px) {
+  .usr {
+    background: url("../images/404.jpg") no-repeat center;
+    background-size:cover;
+    width: 100vw;
+    height: 100vh;
+  }
 }
-@media screen and (max-width:450px){
-    body{
-        background:url('../images/404.jpg') no-repeat center;
-        background-size:cover;
-        width:100vw;
-        height:100vh;
-    }    
+@media screen and (max-width: 450px) {
+  .usr {
+    background: url("../images/404.jpg") no-repeat center;
+    background-size:cover;
+    width: 100vw;
+    height: 100vh;
+  }
 }
