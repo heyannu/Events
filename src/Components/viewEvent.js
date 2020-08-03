@@ -17,6 +17,7 @@ export default class ViewEvent extends Component {
         super(props);
         this.state = {
             events: [],
+            num: [10, 11, 3, 7, 1, 11, 12],
             bday: [],
             anni: [],
             loading: true,
@@ -36,30 +37,43 @@ export default class ViewEvent extends Component {
     }
 
     compare(a, b) {
+        let comparison = 0;
+        const A = a.month;
+        const B = b.month;
+        if (A > B) {
+            comparison = 1;
+        } else if (A < B) {
+            comparison = -1;
+        }
+        return comparison;
 
     }
 
     async componentWillMount() {
         const db = firebase.firestore()
+        var uid = this.props.user.uid
         const snapshot = await db.collection('eventRecord').get()
         snapshot.forEach((doc) => {
-            this.state.events.push(doc.data().eventRecord);
-            this.setState({
-                events: this.state.events,
-                open: false
-            }, () => {
-                for (var i in this.state.events) {
-                    if (this.state.events[i].event === "Birthday") {
-                        this.state.bday.push(this.state.events[i]);
+            if (doc.data().uid === this.props.user.uid) {
+                this.state.events.push(doc.data().eventRecord);
+                this.setState({
+                    events: this.state.events,
+                    open: false
+                }, () => {
+                    for (var i in this.state.events) {
+                        if (this.state.events[i].event === "Birthday") {
+                            this.state.bday.push(this.state.events[i]);
+                        }
+                        else if (this.state.events[i].event === "Anniversary") {
+                            this.state.anni.push(this.state.events[i]);
+                        }
                     }
-                    else if (this.state.events[i].event === "Anniversary") {
-                        this.state.anni.push(this.state.events[i]);
-                    }
-                }
 
-            })
-            this.state.bday = this.duplicate(this.state.bday)
-            this.state.anni = this.duplicate(this.state.anni)
+                })
+                this.state.events.sort(this.compare)
+                this.state.bday = this.duplicate(this.state.bday)
+                this.state.anni = this.duplicate(this.state.anni)
+            }
         });
 
         this.setState({
@@ -82,7 +96,9 @@ export default class ViewEvent extends Component {
     render() {
         return (
             <div className="container1">
-                <Navbar />
+                <Navbar user={this.props.user} />
+
+
                 <Dialog
                     open={this.state.open}
                 >
@@ -119,7 +135,7 @@ export default class ViewEvent extends Component {
                                 labelPlacement="end"
                             /></div>
                         </RadioGroup></div>
-                        <Divider style={{ backgroundColor: "#fff", width: "85%", margin: "0vh 10vh" }} />
+                        <Divider id="divider" />
                         <Grid className="space">
                             {this.state.selectedValue === "All" ? this.state.events.map((e, index) =>
                                 <Grid container spacing={3} id="li">

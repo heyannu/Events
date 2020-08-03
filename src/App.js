@@ -48,17 +48,26 @@ export default class App extends Component {
                         <Register />
                     </Route>
                     <Route exact path='/addEvent' >
-                        <AddEvent user={this.state.user}/>
+                        {
+                            !logged ? <Login /> : <AddEvent user={this.state.user} />
+                        }
                     </Route>
                     <Route exact path='/viewEvent' >
-                        <ViewEvent user={this.state.user}/>
+                        {
+                            !logged ? <Login /> : <ViewEvent user={this.state.user} />
+                        }
                     </Route>
                     <Route exact path='/addMeeting'>
-                        <AddMeeting user={this.state.user}/>
+                        {
+                            !logged ? <Login /> : <AddMeeting user={this.state.user} />
+                        }
+
                     </Route>
 
                     <Route exact path='/viewMeeting'>
-                        <ViewMeeting user={this.state.user}/>
+                        {
+                            !logged ? <Login /> : <ViewMeeting user={this.state.user} />
+                        }
                     </Route>
                     <Route component={UsersNotFound} />
                 </Switch>

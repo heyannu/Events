@@ -16,7 +16,7 @@ export default class Home extends Component {
     super(props);
     this.state = {
       events: [],
-      user:'',
+      user: '',
       annimessage: [],
       bdaymessage: [],
       type: "bday",
@@ -27,6 +27,7 @@ export default class Home extends Component {
   }
 
   async componentDidMount() {
+    console.log(this.props.user)
     const db = firebase.firestore()
     const snapshot = await db.collection('eventRecord').get()
     snapshot.forEach((doc) => {
@@ -46,7 +47,7 @@ export default class Home extends Component {
       bdaymessage: this.state.bdaymessage,
       open: false
     })
-    this.setState({user:this.props.user.email})
+    this.setState({ user: this.props.user.email })
   }
 
   radio(e) {
@@ -77,8 +78,8 @@ export default class Home extends Component {
   }
   render() {
     return (
-      <div className="home" style={{ background:"rgba(0,0,0,0.8"}}>
-        <Navbar user={this.state.user} />
+      <div className="home" style={{ background: "rgba(0,0,0,0.8" }}>
+        <Navbar user={this.props.user} />
         <Dialog
           open={this.state.open}
         >
@@ -90,9 +91,9 @@ export default class Home extends Component {
           </DialogActions>
         </Dialog>
         <div className="logo">
-          <div className="img" style={{background:"#ffffff", marginBottom:"4vh", borderRadius:"25px"}}>
-            <RadioGroup row aria-label="position" name="position" defaultValue="bday" style={{ color: "#000" }} onChange={this.radio.bind(this)} id="top">
-              <div>
+          <div className="img" >
+            <RadioGroup row aria-label="position" name="position" defaultValue="bday" style={{ color: "#000" }} onChange={this.radio.bind(this)} id="top1">
+              <div className="rad">
                 <FormControlLabel
                   value="bday"
                   control={<Radio color="primary" />}
@@ -101,13 +102,14 @@ export default class Home extends Component {
                   name="radio"
                 />
               </div>
-              <div>
+              <div className="rad">
                 <FormControlLabel
                   value="anni"
                   name="radio"
                   control={<Radio color="primary" />}
                   label="Anniversary Wishes"
                   labelPlacement="end"
+                  className="rad"
                 />
               </div>
 
@@ -117,16 +119,16 @@ export default class Home extends Component {
             {this.state.type === 'bday' ? this.state.bdaymessage.map((e, index) =>
               <div className="gr">
                 <Tooltip title="Double Click to Copy">
-                <CopyToClipboard text={this.state.value} className="disp" onCopy={this.oncopyMessage.bind(this, e, "bday")}>
-                  <div className="ll"><ol>{"-> "+e.msg}</ol></div>
-                </CopyToClipboard>
-              </Tooltip>
+                  <CopyToClipboard text={this.state.value} className="disp" onCopy={this.oncopyMessage.bind(this, e, "bday")}>
+                    <div className="ll"><ol>{"-> " + e.msg}</ol></div>
+                  </CopyToClipboard>
+                </Tooltip>
               </div>
             ) : null}
             {this.state.type === 'anni' ? this.state.annimessage.map((e, index) =>
               <Tooltip title="Double Click to Copy">
                 <CopyToClipboard text={this.state.value} className="disp" onCopy={this.oncopyMessage.bind(this, e, "anni")}>
-                  <div className="ll"><ol>{"-> "+e.msg}</ol></div>
+                  <div className="ll"><ol>{"-> " + e.msg}</ol></div>
                 </CopyToClipboard>
               </Tooltip>
             ) : null}

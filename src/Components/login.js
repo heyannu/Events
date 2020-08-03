@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import { Container } from '@material-ui/core';
 import { BrowserRouter as Redirect } from "react-router-dom";
 import firebase from "firebase"
+import swal from "sweetalert"
 import "./Assets/login.css"
 
 export default class Login extends Component {
@@ -25,23 +26,34 @@ export default class Login extends Component {
   }
   submit(e) {
     e.preventDefault();
-    if(this.state.password===""||this.state.email===''){
-      alert("Fields cannot be empty")
+    if (this.state.password === "" || this.state.email === '') {
+      swal("Fields cannot be empty")
     }
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
       this.setState({
-        redirect: true
+        redirect: true,
+        email: "",
+        password: ""
       })
-      console.log(user)
+      swal({
+        title: "Login Successful",
+        icon: "success",
+        button: "OK",
+      })
     }).catch((err) => {
       console.log(err)
-      alert(err.message)
+
+      swal({
+        title: err.message,
+        icon: "error",
+        button: "OK",
+      })
     })
   }
   render() {
     if (this.state.redirect === true) {
       return <Redirect to={{
-        pathname: '/addEvent',
+        pathname: '/',
         state: {
           message: 'Login Successful!'
         }
@@ -63,21 +75,23 @@ export default class Login extends Component {
                     placeholder="Email"
                     variant="outlined"
                     required
+                    value={this.state.email}
                     onChange={this.email.bind(this)}
                     className="text"
                   />
-                
+
                 </div>
 
                 <div className="pos">
                   <TextField
                     id="Password"
+                    value={this.state.password}
                     placeholder="Password"
                     variant="outlined"
                     required
                     onChange={this.password.bind(this)}
                     className="text" />
-                 
+
                 </div>
                 <div >
                   <center>

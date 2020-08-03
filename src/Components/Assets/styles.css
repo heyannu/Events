@@ -15,9 +15,9 @@ h1 {
 .container {
   /* overflow: hidden; */
   justify-content: center;
-  margin: 17vh 14vh 14vh 19vh;
-  width: 80vw;
-  height: 70vh;
+  padding-top: 20vh;
+  width: 100vw;
+  height: 80vh;
   background-color: rgba(0, 0, 0, 0.6);
   color: #ffffff;
   border-radius: 15px;
@@ -26,8 +26,8 @@ h1 {
 }
 .container1 {
   justify-content: center;
-  margin: 17vh 14vh 14vh 19vh;
-  width: 80vw;
+  padding-top: 15vh;
+  width: 100vw;
   overflow: auto;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
@@ -43,18 +43,11 @@ h1 {
   background: #ffffff;
   border-radius: 7px;
 }
-#Name,
-#RName,
-#date {
-  width: 27.8vw;
-  /* border-radius:15px; */
-}
-#Event {
-  width: 26.3vw;
-  /* border-radius:15px; */
+.text {
+  width: 30vw;
 }
 .button {
-  width: 30.2vw;
+  width: 30vw;
   height: 6vh;
   border-radius: 7px;
   color: #fff;
@@ -81,7 +74,7 @@ h1 {
 li {
   list-style: none;
   margin: 0vh 5vh;
-  display:flex;
+  display: flex;
   justify-content: center;
   font-family: Recursive;
   font-size: 2.5vh;
@@ -106,36 +99,109 @@ li {
 .space {
   margin-top: 3vh;
   overflow: visible;
-
 }
 
 .radio {
   display: flex;
   grid-template-rows: auto auto auto;
-  width:70vw;
-  
+  width: 70vw;
 }
 
 #container {
   border-radius: 15px;
 }
 
-#li{
+#li {
   display: flex;
+  padding: 0 0;
   flex-direction: row;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
 }
-.fa-trash{
-  margin-right:3vh
+.fa-trash {
+  margin-right: 3vh;
 }
-.fa-trash:hover{
-  color:red
+.fa-trash:hover {
+  color: red;
 }
-.fa-pencil:hover{
-  color:red
+.fa-pencil:hover {
+  color: red;
 }
-.icons{
-  display:flex;
-  justify-content:center
+.icons {
+  display: flex;
+  justify-content: center;
+}
+#divider {
+  background-color: #fff;
+  margin: 0vh 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background: url("./images/2.jpg") no-repeat center;
+    background-size: cover;
+  }
+  .position {
+    width: 45vw;
+  }
+  .text {
+    width: 45vw;
+  }
+  #top {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+  .button {
+    width: 45vw;
+  }
+  #divider {
+    background-color: #fff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+  li {
+    margin: 0;
+  }
+  .MuiGrid-spacing-xs-3 .MuiGrid-item {
+    padding: 12px 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  body {
+    background: url("./images/2.jpg") no-repeat center;
+    background-size: cover;
+  }
+  li {
+    font-size: 2.3vh;
+  }
+  #top {
+    display: flex;
+    flex-direction: column;
+    margin: 0vh 16vh;
+  }
+}
+@media screen and (max-width: 450px) {
+  body {
+    background: url("./images/2.jpg") no-repeat center;
+    background-size: cover;
+  }
+  .position {
+    width: 60vw;
+  }
+  .text {
+    width: 60vw;
+  }
+  .button {
+    width: 60vw;
+  }
+  #top {
+    margin: 0vh 11vh;
+  }
+  li {
+    font-size: 1.9vh;
+  }
 }

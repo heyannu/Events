@@ -6,7 +6,7 @@ import firebase from 'firebase';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
-import { BrowserRouter as  Redirect, Link } from "react-router-dom";
+import { BrowserRouter as Redirect, Link } from "react-router-dom";
 import "./Assets/styles.css"
 export default class Navbar extends Component {
     constructor(props) {
@@ -16,7 +16,6 @@ export default class Navbar extends Component {
             anchorEl: false,
         }
     }
-
     click(e) {
         this.setState({ anchorEl: e.currentTarget });
     }
@@ -39,13 +38,15 @@ export default class Navbar extends Component {
                 <AppBar position="fixed" style={styles.direction}>
                     <Toolbar>
                         <div style={styles.dir}>
-                            <Link to={{pathname:'/addEvent'}}><Button variant="outlined" class="bg">Add Event</Button></Link>
-                            <Link to={{pathname:'/addMeeting'}}><Button class="bg" variant="outlined">Add Meeting</Button></Link>
-                            <Link to={{pathname:'/'}}><Button class="bg" variant="outlined">Messages</Button></Link>
+                            <Link to={{ pathname: '/addEvent' }}><Button variant="outlined" class="bg">Add Event</Button></Link>
+                            <Link to={{ pathname: '/addMeeting' }}><Button class="bg" variant="outlined">Add Meeting</Button></Link>
+                            <Link to={{ pathname: '/' }}><Button class="bg" variant="outlined">Messages</Button></Link>
 
                         </div>
                         <div style={styles.nav} onClick={this.click.bind(this)} >
                             <AccountCircleRoundedIcon style={styles.icon} />
+                            <p>{this.props.user.displayName}</p>
+
                             <Menu
                                 anchorEl={this.state.anchorEl}
                                 keepMounted
@@ -58,15 +59,14 @@ export default class Navbar extends Component {
                                 </MenuItem>
 
                                 <MenuItem>
-                                <Link to={{pathname:'/viewEvent'}}><Button>View Events</Button> </Link>
+                                    <Link to={{ pathname: '/viewEvent' }}><Button>View Events</Button> </Link>
                                 </MenuItem>
 
                                 <MenuItem>
-                                <Link to={{pathname:'/viewMeeting'}}> <Button>View Meetings</Button> </Link>
+                                    <Link to={{ pathname: '/viewMeeting' }}> <Button>View Meetings</Button> </Link>
                                 </MenuItem>
 
                             </Menu>
-        <p>{this.props.user}</p>
                         </div>
                     </Toolbar>
                 </AppBar>

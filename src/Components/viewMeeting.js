@@ -14,10 +14,11 @@ export default class ViewEvent extends Component {
         super(props);
         this.state = {
             meeting: [],
-            ope:true,
+            open: true,
             loading: true,
             selectedValue: "All",
-            type: ''
+            type: '',
+            user: ''
         }
     }
 
@@ -43,38 +44,42 @@ export default class ViewEvent extends Component {
         return comparison;
     }
 
+
+
+
     async componentWillMount() {
         const db = firebase.firestore()
         const snapshot = await db.collection('meeting').get()
         snapshot.forEach((doc) => {
-            this.state.meeting.push(doc.data().meetingRecord);
-            this.setState({
-                meeting: this.state.meeting,
-                open: false
-            })
-            this.state.meeting.sort(this.compare)
+            if (doc.data().uid === this.props.user.uid) {
+                this.state.meeting.push(doc.data().meetingRecord);
+                this.setState({
+                    meeting: this.state.meeting,
+                    user: this.props.user,
+                    open: false
+                })
+                this.state.meeting.sort(this.compare)
+            }
         });
+        console.log(this.state.user)
     }
-
-
     render() {
         return (
             <div className="container1">
-                <Navbar />
+                <Navbar user={this.props.user} />
                 <Dialog
                     open={this.state.open}
                 >
                     <Grid container justify='center' style={{ marginTop: 10 }}>
                     </Grid>
                     <DialogActions>
-                        {/* <p>count</p> */}
                         <img src={loader} alt='loader'></img>
                     </DialogActions>
                 </Dialog>
                 <div className="radio">
                     <Container>
                         <center><h1>View Meetings</h1></center>
-                        <Divider style={{ backgroundColor: "#fff", width: "85%", margin: "0vh 10vh" }} />
+                        <Divider id="divider" />
                         <Grid className="space">
                             {this.state.meeting.map((e, index) =>
                                 <Grid container spacing={1} id="li">
@@ -82,7 +87,7 @@ export default class ViewEvent extends Component {
                                         <li>{e.name}</li>
                                     </Grid>
                                     <Grid item xs={3}>
-                                        <li>{e.day+"-"+e.month+"-"+e.year}</li>
+                                        <li>{e.day + "-" + e.month + "-" + e.year}</li>
                                     </Grid>
                                     <Grid item xs={3}>
                                         <li>{e.time}</li>

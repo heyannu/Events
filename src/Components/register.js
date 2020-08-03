@@ -4,6 +4,8 @@ import Button from '@material-ui/core/Button';
 import { Container } from '@material-ui/core'
 import { BrowserRouter as Redirect } from "react-router-dom";
 import firebase from "firebase"
+import swal from "sweetalert"
+
 import "./Assets/login.css"
 
 export default class Login extends Component {
@@ -11,7 +13,7 @@ export default class Login extends Component {
     super(props);
     this.state = {
       email: "",
-      // name: "",
+      name: "",
       password: "",
       redirect: false
     }
@@ -20,10 +22,10 @@ export default class Login extends Component {
     this.setState({ email: e.target.value })
     console.log(e.target.value)
   }
-  // name(e) {
-  //   this.setState({ name: e.target.value })
-  //   console.log(e.target.value)
-  // }
+  name(e) {
+    this.setState({ name: e.target.value })
+    console.log(e.target.value)
+  }
   password(e) {
     this.setState({ password: e.target.value })
     console.log(e.target.value)
@@ -31,22 +33,39 @@ export default class Login extends Component {
 
   submit(e) {
     if (this.state.name === "" || this.state.email === "" || this.state.password === "") {
-      alert('Fields can not be empty!')
+      swal('Fields can not be empty!')
     }
     else {
       this.setState({
-        email:'',
-        password:''
+        email: '',
+        password: '',
+
       })
       e.preventDefault();
       firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
+        var user1 = firebase.auth().currentUser;
+        if (user) {
+          user1.updateProfile({
+            displayName: this.state.name,
+          })
+        }
         this.setState({
-          redirect: true
+          redirect: true,
+          name: ''
+        })
+
+        swal({
+          title: "User Created",
+          icon: "success",
+          button: "OK",
         })
       }).catch((err) => {
         console.log(err)
-        alert(err.message)
-       
+        swal({
+          title: err.message,
+          icon: "error",
+          button: "OK",
+        })
       })
 
     }
@@ -55,7 +74,7 @@ export default class Login extends Component {
   render() {
     if (this.state.redirect === true) {
       return <Redirect to={{
-        pathname: '/'
+        pathname: '/login'
       }} />
     }
     else {
@@ -65,6 +84,19 @@ export default class Login extends Component {
             <Container class="layer">
               <div className="title"><center><h1>REGISTER</h1></center></div>
               <Container>
+                <div className="pos">
+                  {/* <center> */}
+                  <TextField
+                    id="Name"
+                    placeholder="Name"
+                    variant="outlined"
+                    required
+                    value={this.state.name}
+                    onChange={this.name.bind(this)}
+                    className="text"
+                  />
+
+                </div>
                 <div className="pos">
                   {/* <center> */}
                   <TextField
