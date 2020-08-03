@@ -51,7 +51,6 @@ export default class ViewEvent extends Component {
 
     async componentWillMount() {
         const db = firebase.firestore()
-        var uid = this.props.user.uid
         const snapshot = await db.collection('eventRecord').get()
         snapshot.forEach((doc) => {
             if (doc.data().uid === this.props.user.uid) {
