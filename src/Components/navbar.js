@@ -7,7 +7,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircleRoundedIcon from '@material-ui/icons/AccountCircleRounded';
 import { BrowserRouter as Redirect, Link } from "react-router-dom";
-import "./Assets/styles.css"
+import "./Assets/css/styles.css"
 export default class Navbar extends Component {
     constructor(props) {
         super(props);

@@ -6,7 +6,7 @@ import { Radio } from '@material-ui/core';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import { Divider } from '@material-ui/core';
-import './Assets/styles.css'
+import './Assets/css/styles.css'
 import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';

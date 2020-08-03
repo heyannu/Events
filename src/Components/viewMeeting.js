@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import firebase from './firebase'
 import { Divider } from '@material-ui/core';
 import { Grid } from '@material-ui/core';
-import './Assets/styles.css';
+import './Assets/css/styles.css';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import loader from './Assets/images/loader.gif'

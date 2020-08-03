@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import firebase from './firebase'
-import './Assets/styles.css'
+import './Assets/css/styles.css'
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Dialog from '@material-ui/core/Dialog';

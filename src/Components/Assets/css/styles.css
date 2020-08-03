@@ -1,5 +1,5 @@
 body {
-  background: url("./images/2.jpg") no-repeat center;
+  background: url("../images/bg.jpg") no-repeat center;
   background-size: cover;
 }
 
@@ -138,9 +138,10 @@ li {
   justify-content: center;
 }
 
+
 @media screen and (max-width: 768px) {
   body {
-    background: url("./images/2.jpg") no-repeat center;
+    background: url("../images/bg.jpg") no-repeat center;
     background-size: cover;
   }
   .position {
@@ -172,7 +173,7 @@ li {
 }
 @media screen and (max-width: 600px) {
   body {
-    background: url("./images/2.jpg") no-repeat center;
+    background: url("../images/bg.jpg") no-repeat center;
     background-size: cover;
   }
   li {
@@ -186,7 +187,7 @@ li {
 }
 @media screen and (max-width: 450px) {
   body {
-    background: url("./images/2.jpg") no-repeat center;
+    background: url("../images/bg.jpg") no-repeat center;
     background-size: cover;
   }
   .position {

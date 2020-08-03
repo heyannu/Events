@@ -6,7 +6,7 @@ import { BrowserRouter as Redirect } from "react-router-dom";
 import firebase from "firebase"
 import swal from "sweetalert"
 
-import "./Assets/login.css"
+import "./Assets/css/login.css"
 
 export default class Login extends Component {
   constructor(props) {
@@ -33,7 +33,6 @@ export default class Login extends Component {
 
   submit(e) {
     if (e.key == 'Enter' || e.type == 'click') {
-
       if (this.state.name === "" || this.state.email === "" || this.state.password === "") {
         swal('Fields can not be empty!')
       }
@@ -55,7 +54,6 @@ export default class Login extends Component {
             redirect: true,
             name: ''
           })
-
           swal({
             title: "User Created",
             icon: "success",
