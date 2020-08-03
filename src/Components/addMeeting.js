@@ -50,27 +50,28 @@ export default class AddEvent extends Component {
         this.setState({ location: e.target.value })
     }
     submit(e) {
-        console.log(this.state)
-        const st = this.state;
-        if (st.name === "" || st.date === "" || st.time === "" || st.location === "") {
-            swal("Fields cannot be empty");
-        }
-        else {
-            const eventRecord = { name: this.state.name, day: this.state.day, month: this.state.month, year: this.state.year, time: this.state.time, location: this.state.location }
-            const db = firebase.firestore()
-            db.collection('meeting').add({ meetingRecord: eventRecord, uid: this.props.user.uid }).then(() => {
-                swal({
-                    title: 'Created',
-                    icon: 'success',
-                    button: 'OK'
+        if (e.key == 'Enter' || e.type == 'click') {
+            const st = this.state;
+            if (st.name === "" || st.date === "" || st.time === "" || st.location === "") {
+                swal("Fields cannot be empty");
+            }
+            else {
+                const eventRecord = { name: this.state.name, day: this.state.day, month: this.state.month, year: this.state.year, time: this.state.time, location: this.state.location }
+                const db = firebase.firestore()
+                db.collection('meeting').add({ meetingRecord: eventRecord, uid: this.props.user.uid }).then(() => {
+                    swal({
+                        title: 'Created',
+                        icon: 'success',
+                        button: 'OK'
+                    })
+                    this.setState({
+                        name: "",
+                        date: "",
+                        time: "",
+                        location: ""
+                    })
                 })
-                this.setState({
-                    name: "",
-                    date: "",
-                    time: "",
-                    location: ""
-                })
-            })
+            }
         }
     }
     render() {

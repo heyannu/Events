@@ -52,27 +52,28 @@ export default class AddEvent extends Component {
         this.setState({ signature: e.target.value })
     }
     submit(e) {
-        console.log(this.state)
-        const st = this.state;
-        if (st.name === "" || st.event === "" || st.date === "" || st.signature === "") {
-            swal("Fields cannot be empty");
-        }
-        else {
-            const eventRecord = { name: this.state.name, day: this.state.day, month: this.state.month, year: this.state.year, event: this.state.event, signature: this.state.signature }
-            const db = firebase.firestore()
-            db.collection('eventRecord').add({ uid: this.props.user.uid, eventRecord: eventRecord }).then(() => {
-                swal({
-                    title: 'Created',
-                    icon: 'success',
-                    button: 'OK'
+        if (e.key == 'Enter' || e.type == 'click') {
+            const st = this.state;
+            if (st.name === "" || st.event === "" || st.date === "" || st.signature === "") {
+                swal("Fields cannot be empty");
+            }
+            else {
+                const eventRecord = { name: this.state.name, day: this.state.day, month: this.state.month, year: this.state.year, event: this.state.event, signature: this.state.signature }
+                const db = firebase.firestore()
+                db.collection('eventRecord').add({ uid: this.props.user.uid, eventRecord: eventRecord }).then(() => {
+                    swal({
+                        title: 'Created',
+                        icon: 'success',
+                        button: 'OK'
+                    })
+                    this.setState({
+                        name: "",
+                        event: "",
+                        date: "",
+                        signature: ""
+                    })
                 })
-                this.setState({
-                    name: "",
-                    event: "",
-                    date: "",
-                    signature: ""
-                })
-            })
+            }
         }
     }
     render() {

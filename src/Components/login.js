@@ -25,30 +25,32 @@ export default class Login extends Component {
     console.log(e.target.value)
   }
   submit(e) {
-    e.preventDefault();
-    if (this.state.password === "" || this.state.email === '') {
-      swal("Fields cannot be empty")
-    }
-    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
-      this.setState({
-        redirect: true,
-        email: "",
-        password: ""
-      })
-      swal({
-        title: "Login Successful",
-        icon: "success",
-        button: "OK",
-      })
-    }).catch((err) => {
-      console.log(err)
+    if (e.key == 'Enter' || e.type == 'click') {
+      e.preventDefault();
+      if (this.state.password === "" || this.state.email === '') {
+        swal("Fields cannot be empty")
+      }
+      firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
+        this.setState({
+          redirect: true,
+          email: "",
+          password: ""
+        })
+        swal({
+          title: "Login Successful",
+          icon: "success",
+          button: "OK",
+        })
+      }).catch((err) => {
+        console.log(err)
 
-      swal({
-        title: err.message,
-        icon: "error",
-        button: "OK",
+        swal({
+          title: err.message,
+          icon: "error",
+          button: "OK",
+        })
       })
-    })
+    }
   }
   render() {
     if (this.state.redirect === true) {

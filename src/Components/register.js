@@ -32,42 +32,44 @@ export default class Login extends Component {
   }
 
   submit(e) {
-    if (this.state.name === "" || this.state.email === "" || this.state.password === "") {
-      swal('Fields can not be empty!')
-    }
-    else {
-      this.setState({
-        email: '',
-        password: '',
+    if (e.key == 'Enter' || e.type == 'click') {
 
-      })
-      e.preventDefault();
-      firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
-        var user1 = firebase.auth().currentUser;
-        if (user) {
-          user1.updateProfile({
-            displayName: this.state.name,
-          })
-        }
+      if (this.state.name === "" || this.state.email === "" || this.state.password === "") {
+        swal('Fields can not be empty!')
+      }
+      else {
         this.setState({
-          redirect: true,
-          name: ''
-        })
+          email: '',
+          password: '',
 
-        swal({
-          title: "User Created",
-          icon: "success",
-          button: "OK",
         })
-      }).catch((err) => {
-        console.log(err)
-        swal({
-          title: err.message,
-          icon: "error",
-          button: "OK",
-        })
-      })
+        e.preventDefault();
+        firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
+          var user1 = firebase.auth().currentUser;
+          if (user) {
+            user1.updateProfile({
+              displayName: this.state.name,
+            })
+          }
+          this.setState({
+            redirect: true,
+            name: ''
+          })
 
+          swal({
+            title: "User Created",
+            icon: "success",
+            button: "OK",
+          })
+        }).catch((err) => {
+          console.log(err)
+          swal({
+            title: err.message,
+            icon: "error",
+            button: "OK",
+          })
+        })
+      }
     }
   }
 
