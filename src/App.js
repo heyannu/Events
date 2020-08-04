@@ -44,9 +44,7 @@ export default class App extends Component {
                             !logged ? <Login /> : <Home user={this.state.user} />
                         }
                     </Route>
-                    <Route exact path="/register">
-                        <Register />
-                    </Route>
+                    <Route exact path="/register" component={Register} />
                     <Route exact path='/addEvent' >
                         {
                             !logged ? <Login /> : <AddEvent user={this.state.user} />
