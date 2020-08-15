@@ -23,7 +23,10 @@ a {
   font-style: oblique;
 }
 .link {
-  margin-top: 6vh;
+  margin-top: 3vh;
+}
+.link1{
+  margin-top: 7vh;
 }
 .img {
   background: #ffffff;
@@ -45,7 +48,7 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 20vw;
+  width: 25vw;
 }
 .text {
   background: #ffffff;
@@ -54,7 +57,7 @@ a {
   /* height: 4vw; */
 }
 .button1 {
-  width: 20vw;
+  width: 25vw;
   height: 6vh;
   border-radius: 7px;
   color: #fff;
@@ -113,11 +116,38 @@ ol li {
   display: grid;
   grid-template-columns: auto auto auto;
 }
-
+#regTitle {
+  margin: 5px 0 -9px 0px;
+  font-size: 5vh;
+}
+#Name,
+#Email,
+#Password,
+#ConfirmPassword {
+  padding: 15px 14px;
+}
+@media screen and (max-width: 940px) {
+  #Name,
+  #Email,
+  #Password,
+  #ConfirmPassword {
+    padding: 10.5px 14px;
+  }
+}
 @media screen and (max-width: 768px) {
   .msgs {
     margin: 6vh 8vh;
     text-align: justify;
+  }
+  #regTitle {
+    margin: 5px 0 -9px 0px;
+    font-size: 5vh;
+  }
+  #Name,
+  #Email,
+  #Password,
+  #ConfirmPassword {
+    padding: 10px 14px;
   }
   ol {
     padding: 0 0vh;
@@ -136,6 +166,17 @@ ol li {
     margin: 0 7vh;
     text-align: justify;
   }
+
+  #regTitle {
+    margin: 8px 0 -7px 0px;
+    font-size: 5vh;
+  }
+  #Name,
+  #Email,
+  #Password,
+  #ConfirmPassword {
+    padding: 10px 14px;
+  }
   ol {
     padding: 0 0vh;
   }
@@ -145,9 +186,9 @@ ol li {
   .button1 {
     width: 35vw;
   }
-  
-  .title{
-    padding:1vh
+
+  .title {
+    padding: 1vh;
   }
 }
 
@@ -155,6 +196,11 @@ ol li {
   .msgs {
     margin: 0 7vh;
     text-align: justify;
+  }
+
+  #regTitle {
+    margin: 12px 0 -7px 0;
+    font-size: 5vh;
   }
   ol {
     padding: 0 0vh;
@@ -175,13 +221,24 @@ ol li {
   .rad {
     margin-left: 10vh;
   }
-
+  #Name,
+  #Email,
+  #Password,
+  #ConfirmPassword {
+    padding: 10px 14px;
+  }
   .img {
     background: #ffffff;
     margin-bottom: 4vh;
     border-radius: 5px;
   }
-  .title{
-    padding:1vh
+  .title {
+    padding: 1vh;
+  }
+  .link {
+    margin-top: 3vh;
+  }
+  .link1{
+    margin-top: 7vh;
   }
 }

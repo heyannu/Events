@@ -87,6 +87,7 @@ export default class Login extends Component {
                     placeholder="Password"
                     variant="outlined"
                     required
+                    type="Password"
                     onChange={this.password.bind(this)}
                     className="text" />
 
@@ -96,7 +97,7 @@ export default class Login extends Component {
                     <Button class="button1" variant="contained" color="primary" className="button" onClick={this.submit.bind(this)}>Login</Button>
                   </center>
                 </div>
-                <div className="link">
+                <div className="link1">
                   <center><p>New User? <Link to={{ pathname: '/register' }}> Create an Account </Link> </p></center>
                 </div>
               </Container>
