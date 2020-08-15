@@ -76,7 +76,7 @@ export default class Login extends Component {
   render() {
     if (this.state.redirect === true) {
       return <Redirect to={{
-        pathname: '/login'
+        pathname: '/'
       }} />
     }
     else {
