@@ -50,13 +50,15 @@ export default class ViewEvent extends Component {
     async componentWillMount() {
         const db = firebase.firestore()
         const snapshot = await db.collection('meeting').get()
+        this.setState({
+            open: false
+        })
         snapshot.forEach((doc) => {
             if (doc.data().uid === this.props.user.uid) {
                 this.state.meeting.push(doc.data().meetingRecord);
                 this.setState({
                     meeting: this.state.meeting,
                     user: this.props.user,
-                    open: false
                 })
                 this.state.meeting.sort(this.compare)
             }

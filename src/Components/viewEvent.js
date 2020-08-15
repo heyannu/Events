@@ -52,12 +52,14 @@ export default class ViewEvent extends Component {
     async componentWillMount() {
         const db = firebase.firestore()
         const snapshot = await db.collection('eventRecord').get()
+        this.setState({
+            open: false
+        })
         snapshot.forEach((doc) => {
             if (doc.data().uid === this.props.user.uid) {
                 this.state.events.push(doc.data().eventRecord);
                 this.setState({
                     events: this.state.events,
-                    open: false
                 }, () => {
                     for (var i in this.state.events) {
                         if (this.state.events[i].event === "Birthday") {
