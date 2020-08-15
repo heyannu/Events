@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Container } from '@material-ui/core';
-import { BrowserRouter as Redirect } from "react-router-dom";
+import { BrowserRouter as Redirect, Link } from "react-router-dom";
 import firebase from "firebase"
 import swal from "sweetalert"
 import "./Assets/css/login.css"
@@ -100,7 +100,7 @@ export default class Login extends Component {
                   </center>
                 </div>
                 <div className="link">
-                  <center><p>New User? <a href="/register"> Create an Account</a></p></center>
+                  <center><p>New User? <Link to={{ pathname: '/register' }}> Create an Account </Link> </p></center>
                 </div>
               </Container>
             </Container>
