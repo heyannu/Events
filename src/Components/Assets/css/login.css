@@ -199,7 +199,7 @@ ol li {
   }
 
   #regTitle {
-    margin: 12px 0 -7px 0;
+    margin: 14px 0 -7px 0;
     font-size: 5vh;
   }
   ol {
@@ -225,7 +225,7 @@ ol li {
   #Email,
   #Password,
   #ConfirmPassword {
-    padding: 10px 14px;
+    padding: 12px 14px;
   }
   .img {
     background: #ffffff;
