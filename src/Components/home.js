@@ -27,7 +27,6 @@ export default class Home extends Component {
   }
 
   async componentDidMount() {
-    console.log(this.props.user)
     const db = firebase.firestore()
     const snapshot = await db.collection('eventRecord').get()
     snapshot.forEach((doc) => {

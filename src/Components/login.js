@@ -18,11 +18,9 @@ export default class Login extends Component {
   }
   email(e) {
     this.setState({ email: e.target.value })
-    console.log(e.target.value)
   }
   password(e) {
     this.setState({ password: e.target.value })
-    console.log(e.target.value)
   }
   submit(e) {
     if (e.key == 'Enter' || e.type == 'click') {
@@ -42,7 +40,6 @@ export default class Login extends Component {
           button: "OK",
         })
       }).catch((err) => {
-        console.log(err)
         swal({
           title: err.message,
           icon: "error",

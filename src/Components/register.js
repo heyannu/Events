@@ -20,15 +20,12 @@ export default class Login extends Component {
   }
   email(e) {
     this.setState({ email: e.target.value })
-    console.log(e.target.value)
   }
   name(e) {
     this.setState({ name: e.target.value })
-    console.log(e.target.value)
   }
   password(e) {
     this.setState({ password: e.target.value })
-    console.log(e.target.value)
   }
 
   submit(e) {
@@ -60,7 +57,6 @@ export default class Login extends Component {
             button: "OK",
           })
         }).catch((err) => {
-          console.log(err)
           swal({
             title: err.message,
             icon: "error",

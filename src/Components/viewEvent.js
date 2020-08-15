@@ -85,13 +85,6 @@ export default class ViewEvent extends Component {
             selectedValue: e.target.value
         })
     }
-
-    // trash(e, trash){
-    //     console.log(e)
-    // }
-    // update(e,trash){
-    //     console.log(e)
-    // }
     render() {
         return (
             <div className="container1">

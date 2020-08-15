@@ -61,7 +61,6 @@ export default class ViewEvent extends Component {
                 this.state.meeting.sort(this.compare)
             }
         });
-        console.log(this.state.user)
     }
     render() {
         return (
