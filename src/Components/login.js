@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Container } from '@material-ui/core';
-import { BrowserRouter as Redirect, Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import firebase from "firebase"
 import swal from "sweetalert"
 import "./Assets/css/login.css"
@@ -26,7 +26,11 @@ export default class Login extends Component {
     if (e.key == 'Enter' || e.type == 'click') {
       e.preventDefault();
       if (this.state.password === "" || this.state.email === '') {
-        swal("Fields cannot be empty")
+        swal({
+          title: 'Fields Cannot Be Empty',
+          icon: 'warning',
+          button: 'OK'
+      });
       }
       firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
         this.setState({

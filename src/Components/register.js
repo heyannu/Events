@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Container } from '@material-ui/core'
-import { BrowserRouter as Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import firebase from "firebase"
 import swal from "sweetalert"
 
@@ -34,31 +34,40 @@ export default class Login extends Component {
   submit(e) {
     if (e.key == 'Enter' || e.type == 'click') {
       if (this.state.name === "" || this.state.email === "" || this.state.password === "") {
-        swal('Fields can not be empty!')
+        swal({
+          title: 'Fields Cannot Be Empty',
+          icon: 'warning',
+          button: 'OK'
+      });
       }
       else if(this.state.password != this.state.cpassword){
-        swal('Passwords do not match');
+        swal({
+          title: 'Passwords do not match',
+          icon: "warning",
+          button: "OK",
+        });
       }
       else {
+        const nname = this.state.name
         this.setState({
           email: '',
           password: '',
-          cpassword: ''
+          cpassword: '',
+          name: ''
         })
         e.preventDefault();
         firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((user) => {
           var user1 = firebase.auth().currentUser;
           if (user) {
             user1.updateProfile({
-              displayName: this.state.name,
+              displayName: nname,
             })
           }
           this.setState({
             redirect: true,
-            name: ''
           })
           swal({
-            title: "User Created",
+            title: "User Created, Login To Continue",
             icon: "success",
             button: "OK",
           })
@@ -75,12 +84,12 @@ export default class Login extends Component {
 
   render() {
     if (this.state.redirect === true) {
-      return <Redirect to={{
-        pathname: '/'
-      }} />
+        return <Redirect to={{
+          pathname: '/login',
+        }} /> 
     }
     else {
-      return (
+    return (
         <div className="login">
           <div>
             <Container class="layer">

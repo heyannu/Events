@@ -55,7 +55,11 @@ export default class AddEvent extends Component {
         if (e.key == 'Enter' || e.type == 'click') {
             const st = this.state;
             if (st.name === "" || st.event === "" || st.date === "" || st.signature === "") {
-                swal("Fields cannot be empty");
+                swal({
+                    title: 'Fields Cannot Be Empty',
+                    icon: 'warning',
+                    button: 'OK'
+                });
             }
             else {
                 const eventRecord = { name: this.state.name, day: this.state.day, month: this.state.month, year: this.state.year, event: this.state.event, signature: this.state.signature }
