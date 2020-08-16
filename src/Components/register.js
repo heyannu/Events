@@ -64,7 +64,8 @@ export default class Login extends Component {
             })
           }
           this.setState({
-            redirect: true,
+            name: '',
+            redirect: true       
           })
           swal({
             title: "User Created, Login To Continue",
