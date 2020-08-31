@@ -29,6 +29,9 @@ export default class Home extends Component {
   async componentDidMount() {
     const db = firebase.firestore()
     const snapshot = await db.collection('eventRecord').get()
+    this.setState({
+      open: false
+  })
     snapshot.forEach((doc) => {
       this.state.events.push(doc.data().eventRecord);
     })
