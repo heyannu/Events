@@ -49,6 +49,8 @@ export default class Home extends Component {
       bdaymessage: this.state.bdaymessage,
       open: false
     })
+    console.log(this.state.bdaymessage)
+
     this.setState({ user: this.props.user.email })
   }
 
